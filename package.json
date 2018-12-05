@@ -1,0 +1,36 @@
+{
+  "name": "@xg4/device",
+  "version": "0.0.1",
+  "description": "Device detection (phone, tablet, desktop, mobile grade, os, versions",
+  "main": "dist/index.min.js",
+  "author": "xg4 <xingor4@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "useragent",
+    "device",
+    "detect",
+    "mobile"
+  ],
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xg4/device.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xg4/device/issues"
+  },
+  "homepage": "https://github.com/xg4/device#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/preset-env": "^7.2.0",
+    "rollup": "^0.67.4",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-uglify": "^6.0.0"
+  }
+}
