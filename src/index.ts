@@ -1,17 +1,20 @@
 export default class XDevice {
-  static new(userAgent) {
+  private static instance: XDevice
+
+  static create(userAgent: string) {
     if (!this.instance) {
-      this.instance = new XDevice(userAgent)
+      this.instance = new this(userAgent)
     }
     return this.instance
   }
-  static instance
 
-  constructor(userAgent) {
+  userAgent: string
+
+  constructor(userAgent: string) {
     this.userAgent = userAgent || (navigator && navigator.userAgent)
   }
 
-  find(regStr) {
+  find(regStr: string) {
     return new RegExp(`${regStr}`, 'ig').test(this.userAgent)
   }
   /**
@@ -84,7 +87,7 @@ export default class XDevice {
     return this.find('meego')
   }
   isCordova() {
-    return window && window.cordova && location.protocol === 'file:'
+    return window && location.protocol === 'file:'
   }
   isNode() {
     return typeof process === 'object'

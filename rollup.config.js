@@ -1,21 +1,35 @@
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
 import babel from 'rollup-plugin-babel'
-import { uglify } from 'rollup-plugin-uglify'
+import { terser } from 'rollup-plugin-terser'
 import pkg from './package.json'
 
+const extensions = ['.js', '.jsx', '.ts', '.tsx']
+
 export default {
-  input: './src/index.js',
-  output: {
-    file: pkg.main,
-    format: 'umd',
-    name: 'XDevice',
-    globals: {
-      XDevice: 'XDevice'
+  input: './src/index.ts',
+  output: [
+    {
+      file: pkg.main,
+      format: 'cjs'
+    },
+    {
+      file: pkg.module,
+      format: 'es'
+    },
+    {
+      name: 'XDevice',
+      file: pkg.browser,
+      format: 'umd'
     }
-  },
+  ],
   plugins: [
+    resolve({ extensions }),
+    commonjs(),
     babel({
+      extensions,
       exclude: 'node_modules/**'
     }),
-    uglify()
+    terser()
   ]
 }
