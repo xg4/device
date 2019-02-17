@@ -1,21 +1,21 @@
 export default class XDevice {
   private static instance: XDevice
 
-  static create(userAgent: string) {
+  static create(userAgent?: string) {
     if (!this.instance) {
       this.instance = new this(userAgent)
     }
     return this.instance
   }
 
-  userAgent: string
+  private userAgent: string
 
-  constructor(userAgent: string) {
+  constructor(userAgent?: string) {
     this.userAgent = userAgent || (navigator && navigator.userAgent)
   }
 
   find(regStr: string) {
-    return new RegExp(`${regStr}`, 'ig').test(this.userAgent)
+    return new RegExp(regStr, 'i').test(this.userAgent)
   }
   /**
    * ios
