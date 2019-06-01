@@ -1,7 +1,7 @@
 export default class XDevice {
   private static instance: XDevice
 
-  static create(userAgent?: string) {
+  public static create(userAgent?: string) {
     if (!this.instance) {
       this.instance = new this(userAgent)
     }
@@ -10,89 +10,108 @@ export default class XDevice {
 
   private userAgent: string
 
-  constructor(userAgent?: string) {
+  public constructor(userAgent?: string) {
     this.userAgent = userAgent || (navigator && navigator.userAgent)
   }
 
-  find(regStr: string) {
+  public find(regStr: string) {
     return new RegExp(regStr, 'i').test(this.userAgent)
   }
   /**
    * ios
    */
-  isIphone() {
+  public isIphone() {
     return !this.isWindows() && this.find('iphone')
   }
-  isIpod() {
+
+  public isIpod() {
     return this.find('ipod')
   }
-  isIpad() {
+
+  public isIpad() {
     return this.find('ipad')
   }
-  isIos() {
+
+  public isIos() {
     return this.isIphone() || this.isIpad() || this.isIpod()
   }
+
   /**
-   * windows
+   * @description windows device
    */
-  isWindows() {
+  public isWindows() {
     return this.find('windows')
   }
-  isWindowsPhone() {
+
+  public isWindowsPhone() {
     return this.isWindows() && this.find('phone')
   }
-  isWindowsTablet() {
+
+  public isWindowsTablet() {
     return this.isWindows() && (this.find('touch') && !this.isWindowsPhone())
   }
+
   /**
-   * android
+   * @description android device
    */
-  isAndroid() {
+  public isAndroid() {
     return !this.isWindows() && this.find('android')
   }
-  isAndroidPhone() {
+
+  public isAndroidPhone() {
     return this.isAndroid() && this.find('mobile')
   }
-  isAndroidTablet() {
+
+  public isAndroidTablet() {
     return this.isAndroid() && !this.find('mobile')
   }
+
   /**
    * blackberry
    */
-  isBlackberry() {
+  public isBlackberry() {
     return this.find('blackberry') || this.find('bb10') || this.find('rim')
   }
-  isBlackberryPhone() {
+
+  public isBlackberryPhone() {
     return this.isBlackberry() && !this.find('tablet')
   }
-  isBlackberryTablet() {
+
+  public isBlackberryTablet() {
     return this.isBlackberry() && this.find('tablet')
   }
+
   /**
    * firefox
    */
-  isFirefox() {
+  public isFirefox() {
     return (this.find('mobile') || this.find('tablet')) && this.find('firefox')
   }
-  isFirefoxPhone() {
+
+  public isFirefoxPhone() {
     return this.isFirefox() && this.find('mobile')
   }
-  isFirefoxTablet() {
+
+  public isFirefoxTablet() {
     return this.isFirefox() && this.find('tablet')
   }
+
   /**
    * other
    */
-  isMeego() {
+  public isMeego() {
     return this.find('meego')
   }
-  isCordova() {
+
+  public isCordova() {
     return window && location.protocol === 'file:'
   }
-  isNode() {
+
+  public isNode() {
     return typeof process === 'object'
   }
-  isMobile() {
+
+  public isMobile() {
     return (
       this.isAndroidPhone() ||
       this.isIphone() ||
@@ -103,7 +122,8 @@ export default class XDevice {
       this.isMeego()
     )
   }
-  isTablet() {
+
+  public isTablet() {
     return (
       this.isIpad() ||
       this.isAndroidTablet() ||
@@ -112,10 +132,12 @@ export default class XDevice {
       this.isFirefoxTablet()
     )
   }
-  isDesktop() {
+
+  public isDesktop() {
     return !this.isTablet() && !this.isMobile()
   }
-  isTv() {
+
+  public isTv() {
     const television = [
       'googletv',
       'viera',
