@@ -6,6 +6,7 @@
     "detect",
     "device",
     "mobile",
+    "tablet",
     "useragent"
   ],
   "homepage": "https://github.com/xg4/device#readme",
@@ -32,9 +33,11 @@
     "build:js": "rollup -c",
     "build:types": "tsc --emitDeclarationOnly",
     "clean": "rimraf dist",
+    "lint": "eslint src/**/* --fix",
     "prepublishOnly": "npm run build",
     "postpublish": "git push && git push --tags",
     "start": "rollup -c -w",
+    "pretest": "npm run lint",
     "test": "jest",
     "test:cov": "npm run test -- --coverage",
     "test:watch": "jest --watch --notify",
@@ -51,6 +54,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
+      "eslint --fix",
       "git add"
     ],
     "*.{json,md,yml}": [
@@ -64,6 +68,17 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-typescript": "^7.3.3",
     "@types/jest": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "husky": "^2.3.0",
     "jest": "^24.8.0",
     "lint-staged": "^8.1.7",
