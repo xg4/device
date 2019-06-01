@@ -7,7 +7,7 @@ import pkg from './package.json'
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
 export default {
-  input: './src/index.ts',
+  input: 'src/index.ts',
   output: [
     {
       file: pkg.main,
@@ -18,7 +18,7 @@ export default {
       format: 'es'
     },
     {
-      name: 'XDevice',
+      name: 'Device',
       file: pkg.browser,
       format: 'umd'
     }
@@ -28,7 +28,7 @@ export default {
     commonjs(),
     babel({
       extensions,
-      exclude: 'node_modules/**'
+      include: ['src/**/*']
     }),
     terser()
   ]
