@@ -32,9 +32,9 @@
     "build:js": "rollup -c",
     "build:types": "tsc --emitDeclarationOnly",
     "clean": "rimraf dist",
-    "dev": "rollup -c -w",
     "prepublishOnly": "npm run build",
     "postpublish": "git push && git push --tags",
+    "start": "rollup -c -w",
     "test": "jest",
     "test:cov": "npm run test -- --coverage",
     "test:watch": "jest --watch --notify",
@@ -43,13 +43,31 @@
     "preversion": "npm run test",
     "postversion": "npm publish"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{json,md,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-typescript": "^7.3.3",
     "@types/jest": "^24.0.13",
+    "husky": "^2.3.0",
     "jest": "^24.8.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
     "rimraf": "^2.6.3",
     "rollup": "^1.13.1",
     "rollup-plugin-babel": "^4.3.2",
