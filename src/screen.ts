@@ -6,13 +6,12 @@ export default class Screen {
   }
 
   public listen(cb?: (event: Event, type: 'landscape' | 'portrait') => void) {
-    let orientationEvent = 'resize'
-    if (hasOwn(window, 'onorientationchange')) {
-      orientationEvent = 'orientationchange'
-    }
+    const eventType = hasOwn(window, 'onorientationchange')
+      ? 'orientationchange'
+      : 'resize'
 
     window.addEventListener(
-      orientationEvent,
+      eventType,
       evt => {
         cb && cb(evt, this.orientation)
       },
