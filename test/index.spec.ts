@@ -1,5 +1,5 @@
 import Device from '../src'
 
-test('new device', () => {
+test('Successfully created an instance', () => {
   expect(new Device()).toBeInstanceOf(Device)
 })

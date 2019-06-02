@@ -1,25 +1,22 @@
-export default class XDevice {
-  private static instance: XDevice
-
-  public static create(userAgent?: string) {
-    if (!this.instance) {
-      this.instance = new this(userAgent)
-    }
-    return this.instance
-  }
-
+export default class Device {
   private userAgent: string
 
   public constructor(userAgent?: string) {
-    this.userAgent = userAgent || (navigator && navigator.userAgent)
+    try {
+      this.userAgent = (userAgent || window.navigator.userAgent).toLowerCase()
+    } catch {
+      this.userAgent = ''
+    }
   }
 
-  public find(regStr: string) {
-    return new RegExp(regStr, 'i').test(this.userAgent)
+  public find(needle: string) {
+    return this.userAgent.includes(needle)
   }
-  /**
-   * ios
-   */
+
+  public isMac() {
+    return this.find('mac')
+  }
+
   public isIphone() {
     return !this.isWindows() && this.find('iphone')
   }
@@ -36,9 +33,6 @@ export default class XDevice {
     return this.isIphone() || this.isIpad() || this.isIpod()
   }
 
-  /**
-   * @description windows device
-   */
   public isWindows() {
     return this.find('windows')
   }
@@ -51,9 +45,6 @@ export default class XDevice {
     return this.isWindows() && (this.find('touch') && !this.isWindowsPhone())
   }
 
-  /**
-   * @description android device
-   */
   public isAndroid() {
     return !this.isWindows() && this.find('android')
   }
@@ -66,9 +57,6 @@ export default class XDevice {
     return this.isAndroid() && !this.find('mobile')
   }
 
-  /**
-   * blackberry
-   */
   public isBlackberry() {
     return this.find('blackberry') || this.find('bb10') || this.find('rim')
   }
@@ -81,11 +69,8 @@ export default class XDevice {
     return this.isBlackberry() && this.find('tablet')
   }
 
-  /**
-   * firefox
-   */
   public isFirefox() {
-    return (this.find('mobile') || this.find('tablet')) && this.find('firefox')
+    return (this.find('(mobile') || this.find('(tablet')) && this.find(' rv:')
   }
 
   public isFirefoxPhone() {
@@ -96,15 +81,16 @@ export default class XDevice {
     return this.isFirefox() && this.find('tablet')
   }
 
-  /**
-   * other
-   */
   public isMeego() {
     return this.find('meego')
   }
 
   public isCordova() {
-    return window && location.protocol === 'file:'
+    return (
+      typeof window !== 'undefined' &&
+      window.cordova &&
+      location.protocol === 'file:'
+    )
   }
 
   public isNode() {
