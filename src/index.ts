@@ -69,6 +69,9 @@ export default class Device {
     return this.isBlackberry() && this.find('tablet')
   }
 
+  /**
+   * @description firefox os, not browser
+   */
   public isFirefox() {
     return (this.find('(mobile') || this.find('(tablet')) && this.find(' rv:')
   }
