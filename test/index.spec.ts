@@ -69,10 +69,34 @@ test('blackberry Z30', () => {
   expect(device.isMobile()).toBeTruthy()
 })
 
+test('blackberry tablet', () => {
+  const device = new Device(UA.blackberryTablet)
+  expect(device.isBlackberryTablet()).toBeTruthy()
+  expect(device.isTablet()).toBeTruthy()
+})
+
 test('windows phone', () => {
   const device = new Device(UA.lumia950)
   expect(device.isWindowsPhone()).toBeTruthy()
   expect(device.isMobile()).toBeTruthy()
+})
+
+test('windows tablet', () => {
+  const device = new Device(UA.windowsTablet)
+  expect(device.isWindowsTablet()).toBeTruthy()
+  expect(device.isTablet()).toBeTruthy()
+})
+
+test('firefox phone', () => {
+  const device = new Device(UA.firefoxPhone)
+  expect(device.isFirefoxPhone()).toBeTruthy()
+  expect(device.isMobile()).toBeTruthy()
+})
+
+test('firefox tablet', () => {
+  const device = new Device(UA.firefoxTablet)
+  expect(device.isFirefoxTablet()).toBeTruthy()
+  expect(device.isTablet()).toBeTruthy()
 })
 
 test('meego phone', () => {
@@ -81,7 +105,17 @@ test('meego phone', () => {
   expect(device.isMobile()).toBeTruthy()
 })
 
+test('google tv', () => {
+  const device = new Device(UA.googleTv)
+  expect(device.isTv()).toBeTruthy()
+})
+
 test('node', () => {
   const device = new Device()
   expect(device.isNode()).toBeTruthy()
+})
+
+test('cordova', () => {
+  const device = new Device()
+  expect(device.isCordova()).not.toBeTruthy()
 })
