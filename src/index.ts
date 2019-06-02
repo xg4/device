@@ -1,9 +1,14 @@
+import { methodToName } from './utils'
+import Screen from './screen'
+
 export default class Device {
+  public static Screen = Screen
+
   public get type() {
     const type = (['isMobile', 'isTablet', 'isDesktop'] as const).find(key =>
       this[key]()
     )
-    return this.methodToName(type) || null
+    return methodToName(type) || null
   }
 
   public get os() {
@@ -17,7 +22,7 @@ export default class Device {
       'isMeego',
       'isTv'
     ] as const).find(key => this[key]())
-    return this.methodToName(os) || null
+    return methodToName(os) || null
   }
 
   private userAgent: string
@@ -28,10 +33,6 @@ export default class Device {
     } catch {
       this.userAgent = ''
     }
-  }
-
-  private methodToName(name: string = '') {
-    return name.slice(2).toLowerCase()
   }
 
   public find(needle: string) {
