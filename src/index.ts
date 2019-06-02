@@ -1,4 +1,25 @@
 export default class Device {
+  public get type() {
+    const type = (['isMobile', 'isTablet', 'isDesktop'] as const).find(key =>
+      this[key]()
+    )
+    return this.methodToName(type) || null
+  }
+
+  public get os() {
+    const os = ([
+      'isIos',
+      'isAndroid',
+      'isBlackberry',
+      'isMac',
+      'isWindows',
+      'isFirefox',
+      'isMeego',
+      'isTv'
+    ] as const).find(key => this[key]())
+    return this.methodToName(os) || null
+  }
+
   private userAgent: string
 
   public constructor(userAgent?: string) {
@@ -7,6 +28,10 @@ export default class Device {
     } catch {
       this.userAgent = ''
     }
+  }
+
+  private methodToName(name: string = '') {
+    return name.slice(2).toLowerCase()
   }
 
   public find(needle: string) {
@@ -127,7 +152,7 @@ export default class Device {
   }
 
   public isTv() {
-    const television = [
+    return [
       'googletv',
       'viera',
       'smarttv',
@@ -143,7 +168,6 @@ export default class Device {
       'pov_tv',
       'hbbtv',
       'ce-html'
-    ]
-    return television.some(tv => this.find(tv))
+    ].some(tv => this.find(tv))
   }
 }
