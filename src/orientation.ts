@@ -1,7 +1,7 @@
 import { hasOwn } from './utils'
 
-export default class Screen {
-  public get orientation() {
+export default class Orientation {
+  public get type() {
     return this.isLandscape() ? 'landscape' : 'portrait'
   }
 
@@ -13,14 +13,14 @@ export default class Screen {
     window.addEventListener(
       eventType,
       evt => {
-        cb && cb(evt, this.orientation)
+        cb && cb(evt, this.type)
       },
       false
     )
   }
 
   /**
-   * @description 竖屏
+   * @description 竖屏状态
    */
   public isPortrait() {
     if (screen.orientation && hasOwn(window, 'onorientationchange')) {

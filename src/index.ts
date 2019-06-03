@@ -1,8 +1,8 @@
 import { methodToName } from './utils'
-import Screen from './screen'
+import Orientation from './orientation'
 
 export default class Device {
-  public static Screen = Screen
+  public static Orientation = Orientation
 
   public get type() {
     const type = (['isMobile', 'isTablet', 'isDesktop'] as const).find(key =>
