@@ -29,45 +29,70 @@ import Device from '@xg4/device'
 // in browser
 const device = new Device()
 
-// in node
+// or custom user-agent in node
 const device = new Device(userAgent)
 ```
 
 ### Instance Properties
 
-| prop | description                                                                    |
+| name | description                                                                    |
 | ---- | ------------------------------------------------------------------------------ |
 | type | device type (mobile, tablet, desktop, `null`)                                  |
 | os   | device os (ios, android, blackberry, mac, windows, firefox, meego, tv, `null`) |
 
 ### Instance Methods
 
-| prop               | description             |
-| ------------------ | ----------------------- |
-| isMac              | /                       |
-| isIphone           | /                       |
-| isIpod             | /                       |
-| isIpad             | /                       |
-| isIos              | /                       |
-| isWindows          | /                       |
-| isWindowsPhone     | /                       |
-| isWindowsTablet    | /                       |
-| isAndroid          | /                       |
-| isAndroidPhone     | /                       |
-| isAndroidTablet    | /                       |
-| isBlackberry       | /                       |
-| isBlackberryPhone  | /                       |
-| isBlackberryTablet | /                       |
-| isFirefox          | firefox os, not browser |
-| isFirefoxPhone     | firefox os, not browser |
-| isFirefoxTablet    | firefox os, not browser |
-| isMeego            | /                       |
-| isCordova          | /                       |
-| isNode             | /                       |
-| isMobile           | /                       |
-| isTablet           | /                       |
-| isDesktop          | /                       |
-| isTv               | /                       |
+| name               | description             | return  |
+| ------------------ | ----------------------- | ------- |
+| isMac              | /                       | Boolean |
+| isIphone           | /                       | Boolean |
+| isIpod             | /                       | Boolean |
+| isIpad             | /                       | Boolean |
+| isIos              | /                       | Boolean |
+| isWindows          | /                       | Boolean |
+| isWindowsPhone     | /                       | Boolean |
+| isWindowsTablet    | /                       | Boolean |
+| isAndroid          | /                       | Boolean |
+| isAndroidPhone     | /                       | Boolean |
+| isAndroidTablet    | /                       | Boolean |
+| isBlackberry       | /                       | Boolean |
+| isBlackberryPhone  | /                       | Boolean |
+| isBlackberryTablet | /                       | Boolean |
+| isFirefox          | firefox os, not browser | Boolean |
+| isFirefoxPhone     | firefox os, not browser | Boolean |
+| isFirefoxTablet    | firefox os, not browser | Boolean |
+| isMeego            | /                       | Boolean |
+| isCordova          | /                       | Boolean |
+| isNode             | /                       | Boolean |
+| isMobile           | /                       | Boolean |
+| isTablet           | /                       | Boolean |
+| isDesktop          | /                       | Boolean |
+| isTv               | /                       | Boolean |
+
+### Screen Orientation
+
+```js
+import Device from '@xg4/device'
+
+// device static prop
+const orientation = new Device.Orientation()
+
+orientation.listen(function(event, type) {
+  // type: 'landscape' || 'portrait'
+})
+```
+
+Instance Properties
+
+- `type`: 'landscape' || 'portrait'
+
+Instance Methods
+
+- `isPortrait`: Boolean
+
+- `isLandscape`: Boolean
+
+- `listen`: void
 
 ## Contributing
 
