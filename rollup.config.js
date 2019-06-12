@@ -10,17 +10,14 @@ export default {
   input: 'src/index.ts',
   output: [
     {
+      name: 'Device',
       file: pkg.main,
-      format: 'cjs'
+      format: 'umd',
+      exports: 'named'
     },
     {
       file: pkg.module,
       format: 'es'
-    },
-    {
-      name: 'Device',
-      file: pkg.browser,
-      format: 'umd'
     }
   ],
   plugins: [

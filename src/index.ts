@@ -1,9 +1,7 @@
 import { methodToName } from './utils'
-import Orientation from './orientation'
+export { default as Orientation } from './orientation'
 
 export default class Device {
-  public static Orientation = Orientation
-
   public get type() {
     const type = (['isMobile', 'isTablet', 'isDesktop'] as const).find(key =>
       this[key]()

@@ -22,9 +22,9 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.cjs.js",
+  "main": "dist/index.min.js",
   "module": "dist/index.esm.js",
-  "browser": "dist/index.umd.js",
+  "browser": "dist/index.min.js",
   "types": "dist/types/index.d.ts",
   "typings": "dist/types/index.d.ts",
   "scripts": {
@@ -64,7 +64,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-typescript": "^7.3.3",
     "@types/cordova": "^0.0.34",
