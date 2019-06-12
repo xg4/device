@@ -33,8 +33,12 @@ export default class Device {
     }
   }
 
-  public find(needle: string) {
-    return this.userAgent.includes(needle)
+  public match(value: string) {
+    return new RegExp(value, 'i').test(this.userAgent)
+  }
+
+  public find(value: string) {
+    return this.userAgent.includes(value)
   }
 
   public isMac() {
