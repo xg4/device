@@ -5,6 +5,14 @@ test('Successfully created an instance', () => {
   expect(new Device()).toBeInstanceOf(Device)
 })
 
+test('public methods', () => {
+  const device = new Device(UA.mac)
+  expect(device.find('windows')).toBeFalsy()
+  expect(device.match('windows')).toBeFalsy()
+  expect(device.find('mac')).toBeTruthy()
+  expect(device.match('MAC')).toBeTruthy()
+})
+
 test('mac os', () => {
   const device = new Device(UA.mac)
   expect(device.isMac()).toBeTruthy()
