@@ -42,32 +42,34 @@ const device = new Device() // or new Device(userAgent)
 
 ### Instance Methods
 
-| name               | description             | return  |
-| ------------------ | ----------------------- | ------- |
-| isMac              | /                       | Boolean |
-| isIphone           | /                       | Boolean |
-| isIpod             | /                       | Boolean |
-| isIpad             | /                       | Boolean |
-| isIos              | /                       | Boolean |
-| isWindows          | /                       | Boolean |
-| isWindowsPhone     | /                       | Boolean |
-| isWindowsTablet    | /                       | Boolean |
-| isAndroid          | /                       | Boolean |
-| isAndroidPhone     | /                       | Boolean |
-| isAndroidTablet    | /                       | Boolean |
-| isBlackberry       | /                       | Boolean |
-| isBlackberryPhone  | /                       | Boolean |
-| isBlackberryTablet | /                       | Boolean |
-| isFirefox          | firefox os, not browser | Boolean |
-| isFirefoxPhone     | firefox os, not browser | Boolean |
-| isFirefoxTablet    | firefox os, not browser | Boolean |
-| isMeego            | /                       | Boolean |
-| isCordova          | /                       | Boolean |
-| isNode             | /                       | Boolean |
-| isMobile           | /                       | Boolean |
-| isTablet           | /                       | Boolean |
-| isDesktop          | /                       | Boolean |
-| isTv               | /                       | Boolean |
+| name                   | description                            | return  |
+| ---------------------- | -------------------------------------- | ------- |
+| find(value:string)     | 传入字符串，进行字符串 `includes` 匹配 | Boolean |
+| match(pattern: RegExp) | 传入正则，进行正则 `test` 匹配         | Boolean |
+| isMac                  | /                                      | Boolean |
+| isIphone               | /                                      | Boolean |
+| isIpod                 | /                                      | Boolean |
+| isIpad                 | /                                      | Boolean |
+| isIos                  | /                                      | Boolean |
+| isWindows              | /                                      | Boolean |
+| isWindowsPhone         | /                                      | Boolean |
+| isWindowsTablet        | /                                      | Boolean |
+| isAndroid              | /                                      | Boolean |
+| isAndroidPhone         | /                                      | Boolean |
+| isAndroidTablet        | /                                      | Boolean |
+| isBlackberry           | /                                      | Boolean |
+| isBlackberryPhone      | /                                      | Boolean |
+| isBlackberryTablet     | /                                      | Boolean |
+| isFirefox              | firefox os, not browser                | Boolean |
+| isFirefoxPhone         | firefox os, not browser                | Boolean |
+| isFirefoxTablet        | firefox os, not browser                | Boolean |
+| isMeego                | /                                      | Boolean |
+| isCordova              | /                                      | Boolean |
+| isNode                 | /                                      | Boolean |
+| isMobile               | /                                      | Boolean |
+| isTablet               | /                                      | Boolean |
+| isDesktop              | /                                      | Boolean |
+| isTv                   | /                                      | Boolean |
 
 ### Screen Orientation
 
