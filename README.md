@@ -24,13 +24,13 @@ $ yarn add @xg4/device
 ## Usage
 
 ```js
+// commonjs in node or browser
+const Device = require('@xg4/device').default
+
+// es module
 import Device from '@xg4/device'
 
-// in browser
-const device = new Device()
-
-// or custom user-agent in node
-const device = new Device(userAgent)
+const device = new Device() // or new Device(userAgent)
 ```
 
 ### Instance Properties
@@ -72,21 +72,24 @@ const device = new Device(userAgent)
 ### Screen Orientation
 
 ```js
-import Device from '@xg4/device'
+// commonjs in node or browser
+const Orientation = require('@xg4/device').Orientation
 
-// device static prop
-const orientation = new Device.Orientation()
+// es module
+import { Orientation } from '@xg4/device'
+
+const orientation = new Orientation()
 
 orientation.listen(function(event, type) {
-  // type: 'landscape' || 'portrait'
+  // type === 'landscape' || 'portrait'
 })
 ```
 
-Instance Properties
+#### Orientation Instance Properties
 
 - `type`: 'landscape' || 'portrait'
 
-Instance Methods
+#### Orientation Instance Methods
 
 - `isPortrait`: Boolean
 
