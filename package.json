@@ -1,6 +1,6 @@
 {
   "name": "@xg4/device",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Device detection (phone, tablet, desktop, os)",
   "keywords": [
     "detect",
