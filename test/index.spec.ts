@@ -8,9 +8,10 @@ test('Successfully created an instance', () => {
 test('public methods', () => {
   const device = new Device(UA.mac)
   expect(device.find('windows')).toBeFalsy()
-  expect(device.match('windows')).toBeFalsy()
+  expect(device.match(/windows/i)).toBeFalsy()
   expect(device.find('mac')).toBeTruthy()
-  expect(device.match('MAC')).toBeTruthy()
+  expect(device.match(/MAC/i)).toBeTruthy()
+  expect(device.match(/Mac/)).toBeTruthy()
 })
 
 test('mac os', () => {

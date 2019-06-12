@@ -25,20 +25,24 @@ export default class Device {
 
   private userAgent: string
 
+  private lowerCase: string
+
   public constructor(userAgent?: string) {
     try {
-      this.userAgent = (userAgent || window.navigator.userAgent).toLowerCase()
+      this.userAgent = userAgent || window.navigator.userAgent
     } catch {
       this.userAgent = ''
     }
+
+    this.lowerCase = this.userAgent.toLowerCase()
   }
 
-  public match(value: string) {
-    return new RegExp(value, 'i').test(this.userAgent)
+  public match(pattern: RegExp) {
+    return pattern.test(this.userAgent)
   }
 
   public find(value: string) {
-    return this.userAgent.includes(value)
+    return this.lowerCase.includes(value)
   }
 
   public isMac() {
